@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Playground</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>JS Playground</h1>
+        <p>8 mini projects to practise JavaScript. The HTML &amp; CSS are done, you write the JS in <code>main.js</code>.</p>
+        <button id="theme-toggle" class="btn btn-ghost">🌙 Dark mode</button>
+    </header>
+
+    <main class="grid">
+
+        <!-- 1. COUNTER — topics: variables, getElementById, click events, textContent -->
+        <section class="card" id="counter-app">
+            <span class="badge">01</span>
+            <h2>Counter</h2>
+            <p class="hint">Click the buttons to change the number.</p>
+            <div class="counter-display" id="counter-value">0</div>
+            <div class="btn-row">
+                <button id="decrement-btn" class="btn btn-danger">− Minus</button>
+                <button id="reset-btn" class="btn btn-ghost">Reset</button>
+                <button id="increment-btn" class="btn btn-success">+ Plus</button>
+            </div>
+        </section>
+
+        <!-- 2. GREETING — topics: input .value, string concatenation / template literals -->
+        <section class="card" id="greeting-app">
+            <span class="badge">02</span>
+            <h2>Say Hello</h2>
+            <p class="hint">Type your name and press the button.</p>
+            <div class="field">
+                <label for="name-input">Your name</label>
+                <input type="text" id="name-input" placeholder="e.g. Rikaz">
+            </div>
+            <button id="greet-btn" class="btn btn-primary btn-block">Greet me</button>
+            <p class="output" id="greeting-output">Your greeting will appear here...</p>
+        </section>
+
+        <!-- 3. CALCULATOR — topics: numbers, Number(), if/else or switch -->
+        <section class="card" id="calculator-app">
+            <span class="badge">03</span>
+            <h2>Calculator</h2>
+            <p class="hint">Enter two numbers and pick an operation.</p>
+            <div class="field-row">
+                <div class="field">
+                    <label for="num1">First number</label>
+                    <input type="number" id="num1" placeholder="0">
+                </div>
+                <div class="field">
+                    <label for="operator">Operator</label>
+                    <select id="operator">
+                        <option value="+">+</option>
+                        <option value="-">−</option>
+                        <option value="*">×</option>
+                        <option value="/">÷</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="num2">Second number</label>
+                    <input type="number" id="num2" placeholder="0">
+                </div>
+            </div>
+            <button id="calculate-btn" class="btn btn-primary btn-block">Calculate</button>
+            <p class="output output-big" id="calc-result">= ?</p>
+        </section>
+
+        <!-- 4. GRADE CHECKER — topics: if / else if / else, comparison operators -->
+        <section class="card" id="grade-app">
+            <span class="badge">04</span>
+            <h2>Grade Checker</h2>
+            <p class="hint">Enter marks (0 – 100) to see the grade.</p>
+            <div class="field">
+                <label for="marks-input">Marks</label>
+                <input type="number" id="marks-input" min="0" max="100" placeholder="e.g. 78">
+            </div>
+            <button id="grade-btn" class="btn btn-primary btn-block">Check grade</button>
+            <!-- Add class: grade-a | grade-b | grade-c | grade-f -->
+            <div class="grade-box" id="grade-result">–</div>
+        </section>
+
+        <!-- 5. COLOR CHANGER — topics: style property, arrays, Math.random -->
+        <section class="card" id="color-app">
+            <span class="badge">05</span>
+            <h2>Color Changer</h2>
+            <p class="hint">Change the box color. Try a random one!</p>
+            <div class="color-box" id="color-box">
+                <span id="color-name">#6366f1</span>
+            </div>
+            <div class="swatches">
+                <button class="swatch" data-color="#ef4444" style="background:#ef4444" aria-label="Red"></button>
+                <button class="swatch" data-color="#f59e0b" style="background:#f59e0b" aria-label="Orange"></button>
+                <button class="swatch" data-color="#10b981" style="background:#10b981" aria-label="Green"></button>
+                <button class="swatch" data-color="#3b82f6" style="background:#3b82f6" aria-label="Blue"></button>
+                <button class="swatch" data-color="#ec4899" style="background:#ec4899" aria-label="Pink"></button>
+            </div>
+            <button id="random-color-btn" class="btn btn-primary btn-block">🎲 Random color</button>
+        </section>
+
+        <!-- 6. CHARACTER COUNTER — topics: "input" event, string .length -->
+        <section class="card" id="char-app">
+            <span class="badge">06</span>
+            <h2>Character Counter</h2>
+            <p class="hint">Write a short bio. Max 150 characters.</p>
+            <div class="field">
+                <label for="bio-input">Bio</label>
+                <textarea id="bio-input" rows="4" maxlength="150" placeholder="Tell us about yourself..."></textarea>
+            </div>
+            <!-- Add class "limit" when close to 150 -->
+            <p class="char-count" id="char-count"><span id="char-current">0</span> / 150</p>
+        </section>
+
+        <!-- 7. TODO LIST — topics: arrays, createElement, appendChild, remove, classList.toggle -->
+        <section class="card card-wide" id="todo-app">
+            <span class="badge">07</span>
+            <h2>Todo List</h2>
+            <p class="hint">Add tasks, mark them done, delete them.</p>
+            <form id="todo-form" class="inline-form">
+                <input type="text" id="todo-input" placeholder="What do you need to do?">
+                <button type="submit" id="add-todo-btn" class="btn btn-primary">Add</button>
+            </form>
+
+            <ul class="todo-list" id="todo-list">
+                <!--
+                    Each item your JS creates should look like this:
+
+                    <li class="todo-item">            add class "done" when completed
+                        <input type="checkbox" class="todo-check">
+                        <span class="todo-text">Buy milk</span>
+                        <button class="btn-icon todo-delete">✕</button>
+                    </li>
+                -->
+            </ul>
+            <p class="empty-state" id="todo-empty">No tasks yet. Add one above 👆</p>
+
+            <div class="todo-footer">
+                <span id="todo-count">0 tasks left</span>
+                <button id="clear-done-btn" class="btn btn-ghost btn-sm">Clear completed</button>
+            </div>
+        </section>
+
+        <!-- 8. SIGN-UP FORM VALIDATION — topics: submit event, preventDefault, validation, regex -->
+        <section class="card card-wide" id="signup-app">
+            <span class="badge">08</span>
+            <h2>Sign Up Form</h2>
+            <p class="hint">Validate every field before "submitting".</p>
+
+            <form id="signup-form" novalidate>
+                <div class="field-row">
+                    <!-- Add class "invalid" or "valid" to .field -->
+                    <div class="field" id="field-fullname">
+                        <label for="fullname">Full name</label>
+                        <input type="text" id="fullname" placeholder="John Doe">
+                        <small class="error-msg" id="fullname-error">Name is required</small>
+                    </div>
+                    <div class="field" id="field-email">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="john@example.com">
+                        <small class="error-msg" id="email-error">Enter a valid email</small>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field" id="field-password">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="At least 6 characters">
+                        <small class="error-msg" id="password-error">Password must be 6+ characters</small>
+                    </div>
+                    <div class="field" id="field-confirm">
+                        <label for="confirm-password">Confirm password</label>
+                        <input type="password" id="confirm-password" placeholder="Repeat password">
+                        <small class="error-msg" id="confirm-error">Passwords do not match</small>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field" id="field-age">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" placeholder="18">
+                        <small class="error-msg" id="age-error">You must be 18 or older</small>
+                    </div>
+                    <div class="field" id="field-country">
+                        <label for="country">Country</label>
+                        <select id="country">
+                            <option value="">-- Select --</option>
+                            <option value="lk">Sri Lanka</option>
+                            <option value="in">India</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="us">United States</option>
+                        </select>
+                        <small class="error-msg" id="country-error">Please choose a country</small>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <span class="label">Gender</span>
+                    <div class="radio-group">
+                        <label class="radio"><input type="radio" name="gender" value="male"> Male</label>
+                        <label class="radio"><input type="radio" name="gender" value="female"> Female</label>
+                        <label class="radio"><input type="radio" name="gender" value="other"> Other</label>
+                    </div>
+                </div>
+
+                <div class="field" id="field-terms">
+                    <label class="checkbox">
+                        <input type="checkbox" id="terms"> I agree to the terms &amp; conditions
+                    </label>
+                    <small class="error-msg" id="terms-error">You must accept the terms</small>
+                </div>
+
+                <button type="submit" id="signup-btn" class="btn btn-primary btn-block">Create account</button>
+            </form>
+
+            <!-- Remove class "hidden" to show -->
+            <div class="alert alert-success hidden" id="signup-success">
+                ✅ Account created successfully!
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        Built for learning JavaScript 🚀
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
